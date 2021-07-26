@@ -36,4 +36,22 @@ public class User {
 						", userPassword='" + userPassword + '\'' +
 						'}';
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof User)) return false;
+
+		User user = (User) o;
+
+		if (!getUserName().equals(user.getUserName())) return false;
+		return getUserPassword().equals(user.getUserPassword());
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getUserName().hashCode();
+		result = 31 * result + getUserPassword().hashCode();
+		return result;
+	}
 }
